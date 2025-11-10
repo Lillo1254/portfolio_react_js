@@ -14,17 +14,15 @@ export default function Section4({ style, isDesktop }) {
 
     try {
       // Configure your EmailJS IDs via Vite env variables
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
       if (!serviceId || !templateId || !publicKey) {
         throw new Error("EmailJS non configurato: verifica le variabili .env")
       }
 
-      await emailjs.sendForm(serviceId, templateId, formRef.current, {
-        publicKey,
-      })
+      await emailjs.sendForm(serviceId, templateId, formRef.current, { publicKey });
       setStatus({ type: "success", message: "Messaggio inviato! Ti risponderò a breve." })
       formRef.current?.reset()
     } catch (err) {
