@@ -2,6 +2,10 @@ import { Link } from "react-router";
 import img from "../../assets/react.svg";
 
 export default function Section1({ style, isDesktop }) {
+
+  const handleCLick = () => {
+    scrollTo({ top: 9000, behavior: "smooth" });
+  }
   return (
     <section className={`relative w-full text-white overflow-hidden ${isDesktop ? "min-h-screen" : "pb-16"}`}>
       <div className="pointer-events-none fixed inset-0 bg-linear-to-b from-transparent via-cyan-900/15 to-transparent" />
@@ -61,12 +65,12 @@ export default function Section1({ style, isDesktop }) {
             </div>
 
             <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 justify-center lg:justify-start">
-              <a
-                href="#contact"
+              <button
+                onClick={handleCLick}
                 className="inline-flex items-center gap-3 px-7 py-3 rounded-full bg-cyan-500/90 hover:bg-cyan-400 text-slate-900 font-semibold transition-colors shadow-[0_10px_30px_rgba(34,211,238,0.35)]"
               >
                 Parliamo del tuo progetto
-              </a>
+              </button>
 <Link to={"about-me"}>
               <div className="flex items-center gap-3 text-black text-sm bg-cyan-500 border border-white/10 rounded-2xl backdrop-blur-xl p-2">
                 <span className="inline-flex h-2 w-2 rounded-full bg-emerald-300 animate-pulse"></span>

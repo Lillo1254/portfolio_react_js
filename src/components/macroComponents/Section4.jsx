@@ -1,37 +1,49 @@
-import { useRef, useState } from "react"
-import emailjs from "@emailjs/browser"
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 
 export default function Section4({ style, isDesktop }) {
-  const formRef = useRef(null)
-  const [isSending, setIsSending] = useState(false)
-  const [status, setStatus] = useState({ type: null, message: "" })
+  const formRef = useRef(null);
+  const [isSending, setIsSending] = useState(false);
+  const [status, setStatus] = useState({ type: null, message: "" });
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    if (isSending) return
-    setIsSending(true)
-    setStatus({ type: null, message: "" })
+    e.preventDefault();
+    if (isSending) return;
+    setIsSending(true);
+    setStatus({ type: null, message: "" });
 
     try {
       // Configure your EmailJS IDs via Vite env variables
-const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
       if (!serviceId || !templateId || !publicKey) {
-        throw new Error("EmailJS non configurato: verifica le variabili .env")
+        throw new Error("EmailJS non configurato: verifica le variabili .env");
       }
 
-      await emailjs.sendForm(serviceId, templateId, formRef.current, { publicKey });
-      setStatus({ type: "success", message: "Messaggio inviato! Ti risponderò a breve." })
-      formRef.current?.reset()
+      await emailjs.sendForm(serviceId, templateId, formRef.current, {
+        publicKey,
+      });
+
+      setStatus({
+        type: "success",
+        message: "Messaggio inviato! Ti risponderò a breve.",
+      });
+      formRef.current?.reset();
+      setTimeout(() => {
+        setStatus({ type: null, message: "" });
+      }, 10000);
     } catch (err) {
-      setStatus({ type: "error", message: "Invio fallito. Riprova tra poco." })
-      console.error(err)
+      setStatus({ type: "error", message: "Invio fallito. Riprova tra poco." });
+      console.error(err);
+      setTimeout(() => {
+        setStatus({ type: null, message: "" });
+      }, 10000);
     } finally {
-      setIsSending(false)
+      setIsSending(false);
     }
-  }
+  };
 
   return (
     <>
@@ -45,8 +57,12 @@ const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
         style={isDesktop ? style : undefined}
       >
         <div className="backdrop-blur-xl bg-gray-900/40 border border-gray-700 rounded-2xl shadow-[0_0_40px_rgba(34,211,238,0.15)] p-6 sm:p-8">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-center mb-2 bg-linear-to-r from-cyan-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent drop-shadow-[0_0_24px_rgba(34,211,238,0.35)]">Contattami</h2>
-          <p className="text-gray-300 text-center mb-6">Scrivimi: backbacklazio@gmail.com</p>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-center mb-2 bg-linear-to-r from-cyan-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent drop-shadow-[0_0_24px_rgba(34,211,238,0.35)]">
+            Contattami
+          </h2>
+          <p className="text-gray-300 text-center mb-6">
+            Scrivimi: backbacklazio@gmail.com
+          </p>
 
           <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -61,7 +77,9 @@ const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
                 />
               </div>
               <div>
-                <label className="block text-sm text-gray-300 mb-1">Email</label>
+                <label className="block text-sm text-gray-300 mb-1">
+                  Email
+                </label>
                 <input
                   type="email"
                   name="user_email"
@@ -73,7 +91,9 @@ const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
             </div>
 
             <div>
-              <label className="block text-sm text-gray-300 mb-1">Oggetto</label>
+              <label className="block text-sm text-gray-300 mb-1">
+                Oggetto
+              </label>
               <input
                 type="text"
                 name="subject"
@@ -84,7 +104,9 @@ const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
             </div>
 
             <div>
-              <label className="block text-sm text-gray-300 mb-1">Messaggio</label>
+              <label className="block text-sm text-gray-300 mb-1">
+                Messaggio
+              </label>
               <textarea
                 name="message"
                 rows="5"
@@ -117,5 +139,5 @@ const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
         </div>
       </div>
     </>
-  )
+  );
 }
