@@ -3,6 +3,7 @@ import "./App.css";
 import Section1 from "./components/macroComponents/Section1";
 
 import video1 from "./assets/video7.mp4";
+import imagev from "./assets/image.png";
 import Section3 from "./components/macroComponents/Section3.jsx";
 import Section2 from "./components/macroComponents/Section2.jsx";
 import Section4 from "./components/macroComponents/Section4.jsx";
@@ -110,6 +111,7 @@ function App() {
         muted
         className="fixed w-full h-full object-cover"
         preload="auto"
+        poster={imagev}
       ></video> : <video
         src={video1}
         id="video"
@@ -117,6 +119,7 @@ function App() {
         muted
           className="fixed w-full h-full object-cover"
           preload="auto"
+          poster={imagev}
       ></video>}
       
 
