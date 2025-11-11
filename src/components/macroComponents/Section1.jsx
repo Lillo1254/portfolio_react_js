@@ -45,7 +45,7 @@ export default function Section1({ style, isDesktop }) {
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center lg:justify-start">
               <div className="flex items-center gap-3 px-5 py-3 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl w-full sm:w-auto">
                 <div className="h-10 w-10 rounded-full bg-cyan-500/20 border border-cyan-400/30 grid place-items-center">
-                  <span className="ext-sm font-bold bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(45,212,191,0.35)] bg-linear-to-r from-cyan-700 via-blue-700 to-emerald-700">UI</span>
+                  <span className="text-sm font-bold bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(45,212,191,0.35)] bg-linear-to-r from-cyan-700 via-blue-700 to-emerald-700">UI</span>
                 </div>
                 <div className="text-left">
                   <h3 className="text-sm font-bold bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(45,212,191,0.35)] bg-linear-to-r from-cyan-700 via-blue-700 to-emerald-700">Design • Animazioni • Accessibilità</h3>

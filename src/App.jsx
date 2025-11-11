@@ -18,6 +18,7 @@ function App() {
   const [scale2, setScale2] = useState(0);
   const [scale3, setScale3] = useState(0);
   const [scale4, setScale4] = useState(0);
+  const [visible, setVisible] = useState(false);
 
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const scrollTimeoutRef = useRef(null);
@@ -33,7 +34,10 @@ function App() {
   const updateScale = useCallback(() => {
     if (!isDesktop) return;
     const scrollValue = window.scrollY;
-    console.log("ScrollY:", scrollValue);
+    // console.log("ScrollY:", scrollValue);
+    if (scrollValue > 200) {
+      setVisible(true);
+    }else{ setVisible(false); }
     const video = document.getElementById("video");
       if (video && scrollValue <= 7100) {
       video.play();
@@ -91,6 +95,9 @@ function App() {
     };
   }, []);
 
+  const handleClick =()=>{
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 
 
 
@@ -102,12 +109,14 @@ function App() {
         loop
         muted
         className="fixed w-full h-full object-cover"
+        preload="auto"
       ></video> : <video
         src={video1}
         id="video"
         loop
         muted
-        className="fixed w-full h-full object-cover"
+          className="fixed w-full h-full object-cover"
+          preload="auto"
       ></video>}
       
 
@@ -158,6 +167,14 @@ function App() {
         }
         isDesktop={isDesktop}
       />
+
+      {visible &&
+
+      <div className="fixed px-4 top-[97%] left-[50%] translate-x-[-50%] translate-y-[-50%] rounded-full bg-cyan-500/20 border border-cyan-400/30 grid place-items-center" onClick={handleClick}>
+
+      <button className=" font-bold bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(45,212,191,0.35)] bg-linear-to-r from-cyan-700 via-blue-700 to-emerald-700" >home</button>
+      </div>
+      }
     </div>
   );
 }

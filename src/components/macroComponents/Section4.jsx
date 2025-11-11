@@ -51,8 +51,8 @@ export default function Section4({ style, isDesktop }) {
         id="contact"
         className={`${
           isDesktop
-            ? "fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-            : "relative mx-auto"
+            ? "fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 "
+            : "relative mx-auto mt-4"
         } w-[92vw] max-w-2xl px-4 sm:px-6`}
         style={isDesktop ? style : undefined}
       >
@@ -65,7 +65,7 @@ export default function Section4({ style, isDesktop }) {
           </p>
 
           <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2  gap-4">
               <div>
                 <label className="block text-sm text-gray-300 mb-1">Nome</label>
                 <input
@@ -109,7 +109,7 @@ export default function Section4({ style, isDesktop }) {
               </label>
               <textarea
                 name="message"
-                rows="5"
+                rows="3"
                 required
                 className="w-full bg-transparent border border-gray-700/70 rounded-lg px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500/60 shadow-[inset_0_0_0_999px_rgba(0,0,0,0)]"
                 placeholder="Scrivi il tuo messaggio..."
