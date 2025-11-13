@@ -34,7 +34,7 @@ export default function Section3({ style, isDesktop }) {
         style={isDesktop ? style : undefined}
       >
         <div className="backdrop-blur-xl bg-gray-900/40 border border-gray-700 rounded-2xl shadow-[0_0_40px_rgba(34,211,238,0.15)] p-6 sm:p-8">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center mb-6 bg-linear-to-r from-cyan-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent drop-shadow-[0_0_24px_rgba(34,211,238,0.35)]">Ultimi progetti GitHub</h2>
+          <h2 className="text-1xl sm:text-3xl md:text-4xl font-extrabold text-center mb-6 bg-linear-to-r from-cyan-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent drop-shadow-[0_0_24px_rgba(34,211,238,0.35)]">Ultimi progetti GitHub</h2>
 
           {loading && (
             <p className="text-gray-300 text-center">Caricamento in corso...</p>

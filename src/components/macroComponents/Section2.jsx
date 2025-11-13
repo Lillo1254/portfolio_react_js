@@ -68,7 +68,7 @@ export default function Section2({ style, isDesktop }) {
         } flex flex-col justify-center items-center`}
         style={isDesktop ? style : undefined}
       >
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-10 text-center bg-linear-to-r from-cyan-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent drop-shadow-[0_0_24px_rgba(34,211,238,0.35)]">
+        <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold mb-10 text-center bg-linear-to-r from-cyan-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent drop-shadow-[0_0_24px_rgba(34,211,238,0.35)]">
           Tecnologie & Linguaggi
         </h1>
 
